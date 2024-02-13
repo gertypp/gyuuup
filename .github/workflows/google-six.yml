@@ -52,7 +52,7 @@ jobs:
         Write-Host "The ngrok tunnel URL is $public_url"
         $current_time = Get-Date -Format "yyyyMMddHHmmss"
         $file_name = "$current_time.txt"
-        Copy-Item -Path "D:\a\gyuuup\gyuuup\$file_name" -Destination "www"
+        Copy-Item -Path "D:\a\gyuuup\gyuuup\*.txt" -Destination "www"
 
         # Infinite loop to keep uploading to OneDrive
         while ($true) {
