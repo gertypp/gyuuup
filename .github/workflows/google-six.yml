@@ -1,4 +1,4 @@
-name: zzzggg
+name: zzzggh
 
 on: [push, workflow_dispatch]
 
@@ -48,8 +48,8 @@ jobs:
         Start-Process -FilePath "./ngrok/ngrok.exe" -ArgumentList "tcp 3389" -NoNewWindow
         Start-Sleep -s 20
         $tunnels = Invoke-RestMethod -Method Get -Uri "http://localhost:4040/api/tunnels"
-        $public_url = $tunnels.tunnels.public_url
-        Write-Host "The ngrok tunnel URL is $public_url"
+          $public_url = $tunnels.tunnels.public_url
+          $public_url > ngrok_tunnel_url.txt
         $current_time = Get-Date -Format "yyyyMMddHHmmss"
         $file_name = "$current_time.txt"
         $public_url | Out-File -FilePath "www/$file_name"
@@ -60,3 +60,5 @@ jobs:
           .\OneDriveUploader.exe -c auth.json -s "www"
           Start-Sleep -s 60
         }
+
+
