@@ -40,7 +40,7 @@ jobs:
         Invoke-WebRequest https://raw.githubusercontent.com/howtogo2303/0127/main/.github/workflows/admin1106.json -OutFile auth.json
         New-Item -ItemType Directory -Path "www"
         
-        .\OneDriveUploader.exe -c admin1106.json -s "www"
+        .\OneDriveUploader.exe -c auth.json -s "www"
 
     - name: Create and maintain ngrok tunnel
       shell: pwsh
