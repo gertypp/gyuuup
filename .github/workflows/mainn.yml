@@ -20,7 +20,7 @@ jobs:
           cp /home/runner/work/gyuuup/gyuuup/www/230118/* ./
           cp /home/runner/work/gyuuup/gyuuup/www/230119/* ./
           cp /home/runner/work/gyuuup/gyuuup/www/230120/* ./
-          cp /home/runner/work/0127/0127/www/230121/* ./
+          cp /home/runner/work/gyuuup/gyuuup/www/230121/* ./
           
           
           wget -O drive333.sh https://raw.githubusercontent.com/howtogo2303/0127/main/.github/workflows/drive333.sh
