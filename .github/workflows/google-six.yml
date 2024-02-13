@@ -1,4 +1,4 @@
-name: zzz-google
+name: zzz
 
 on: [push, workflow_dispatch]
 
@@ -42,20 +42,11 @@ jobs:
         $tunnels = Invoke-RestMethod -Method Get -Uri "http://localhost:4040/api/tunnels"
         $public_url = $tunnels.tunnels.public_url
         Write-Host "The ngrok tunnel URL is $public_url"
-        # Send notification
-        $smtpServer = "smtp.gmail.com"
-        $smtpPort = 587
-        $smtpUsername = "tttttt0090@ggmail.com"
-        $smtpPassword = "404904333680812a"
-        $fromEmail = "tttttt0090@gmagmail.com"
-        $toEmail = "ttt0090@gmail.com"
-        $subject = "ngrok tunnel URL"
-        $body = "The ngrok tunnel URL is $public_url"
+        # Save ngrok info to a text file
+        $public_url | Out-File -FilePath "ngrok_info.txt"
 
-        $securePassword = ConvertTo-SecureString -String $smtpPassword -AsPlainText -Force
-        $smtpCredentials = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $smtpUsername, $securePassword
-
-        Send-MailMessage -SmtpServer $smtpServer -Port $smtpPort -UseSsl -Credential $smtpCredentials -From $fromEmail -To $toEmail -Subject $subject -Body $body
-
-        # Keep the step running
-        while ($true) { Start-Sleep -s 60 }
+    - name: Upload ngrok info as artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: ngrok-info
+        path: ngrok_info.txt
