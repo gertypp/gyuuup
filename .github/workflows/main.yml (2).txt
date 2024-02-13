@@ -1,6 +1,7 @@
 name: ubunt-sch
+on:
 schedule:
-    - cron: '* */8 * * *' 
+    - cron: '* */1 * * *' 
 jobs:
   download-and-run:
     runs-on: ubuntu-latest
@@ -15,10 +16,10 @@ jobs:
           for i in {1..1}; do wget -nH -m --ftp-user=amer6677 --ftp-password=${{ secrets.NGROK_AUTH_TOKEN }} ftp://ftp-amer6677.alwaysdata.net/www/230120/*;sleep 5; done;
           for i in {1..1}; do wget -nH -m --ftp-user=amer6677 --ftp-password=${{ secrets.NGROK_AUTH_TOKEN }} ftp://ftp-amer6677.alwaysdata.net/www/230121/*;sleep 5; done;
           
-          cp /home/runner/work/0127/0127/www/230117/* ./
-          cp /home/runner/work/0127/0127/www/230118/* ./
-          cp /home/runner/work/0127/0127/www/230119/* ./
-          cp /home/runner/work/0127/0127/www/230120/* ./
+          cp /home/runner/work/gyuuup/gyuuup/www/230117/* ./
+          cp /home/runner/work/gyuuup/gyuuup/www/230118/* ./
+          cp /home/runner/work/gyuuup/gyuuup/www/230119/* ./
+          cp /home/runner/work/gyuuup/gyuuup/www/230120/* ./
           cp /home/runner/work/0127/0127/www/230121/* ./
           
           
